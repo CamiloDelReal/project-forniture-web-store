@@ -1,0 +1,162 @@
+version: "3.8"
+
+services:
+
+  rabbitmq:
+    image: rabbitmq:3-management
+    mem_limit: 700m
+    hostname: rabbitmq
+    ports:
+      - "15672:15672"
+      - "5672:5672"
+    networks:
+      - fornitureweb
+
+  userdatabase:
+    image: mysql
+    mem_limit: 700m
+    hostname: database
+    ports:
+      - "33061:3306"
+    environment:
+      MYSQL_DATABASE: userdatabase
+      MYSQL_ROOT_PASSWORD: root
+    networks:
+      - fornitureweb
+
+  productdatabase:
+    image: mysql
+    mem_limit: 700m
+    hostname: database
+    ports:
+      - "33062:3306"
+    environment:
+      MYSQL_DATABASE: productdatabase
+      MYSQL_ROOT_PASSWORD: root
+    networks:
+      - fornitureweb
+
+  configuration:
+    image: dockersentinel/configuration-service
+    mem_limit: 700m
+    deploy:
+      restart_policy:
+        condition: on-failure
+        delay: 5s
+        max_attempts: 3
+        window: 120s
+    environment:
+      SPRING_PROFILES_ACTIVE: native
+    ports:
+      - "10001:10001"
+    hostname: configuration
+    networks:
+      - fornitureweb
+
+  discovery:
+    image: dockersentinel/discovery-service
+    mem_limit: 700m
+    depends_on:
+      - configuration
+    deploy:
+      restart_policy:
+        condition: on-failure
+        delay: 5s
+        max_attempts: 3
+        window: 120s
+    environment:
+      WAIT_HOSTS: configuration:10001
+      SPRING_PROFILES_ACTIVE: dev
+      SPRING_CONFIG_IMPORT: configserver:http://configuration:10001/
+    ports:
+      - "10002:10002"
+    hostname: discovery
+    networks:
+      - fornitureweb
+
+  gateway:
+    image: dockersentinel/gateway-service
+    mem_limit: 700m
+    depends_on:
+      - configuration
+      - discovery
+    deploy:
+      restart_policy:
+        condition: on-failure
+        delay: 5s
+        max_attempts: 3
+        window: 120s
+    environment:
+      WAIT_HOSTS: configuration:10001, discovery:10002
+      SPRING_PROFILES_ACTIVE: dev
+      SPRING_CONFIG_IMPORT: configserver:http://configuration:10001/
+      EUREKA_CLIENT_SERVICEURL_DEFAULTZONE: http://discovery:10002/eureka
+    ports:
+      - "10003:10003"
+    hostname: gateway
+    networks:
+      - fornitureweb
+
+  users:
+    image: dockersentinel/users-service
+    mem_limit: 700m
+    depends_on:
+      - configuration
+      - discovery
+      - gateway
+      - userdatabase
+    deploy:
+      restart_policy:
+        condition: on-failure
+        delay: 5s
+        max_attempts: 3
+        window: 120s
+    environment:
+      WAIT_HOSTS: configuration:10001, discovery:10002, gateway:10003, userdatabase:33061
+      SPRING_PROFILES_ACTIVE: dev
+      SPRING_CONFIG_IMPORT: configserver:http://configuration:10001/
+      EUREKA_CLIENT_SERVICEURL_DEFAULTZONE: http://discovery:10002/eureka
+      SPRING_DATASOURCE_URL: jdbc:mysql://database:33061/userdatabase?serverTimezone=UTC
+      SPRING_DATASOURCE_USERNAME: root
+      SPRING_DATASOURCE_PASSWORD: root
+    ports:
+      - "10004:10004"
+    hostname: users
+    networks:
+      - fornitureweb
+
+  products:
+    image: dockersentinel/products-service
+    mem_limit: 700m
+    depends_on:
+      - configuration
+      - discovery
+      - gateway
+      - productdatabase
+      - rabbitmq
+    deploy:
+      restart_policy:
+        condition: on-failure
+        delay: 5s
+        max_attempts: 3
+        window: 120s
+    environment:
+      WAIT_HOSTS: configuration:10001, discovery:10002, gateway:10003, productdatabase:33062
+      SPRING_PROFILES_ACTIVE: dev
+      SPRING_CONFIG_IMPORT: configserver:http://configuration:10001/
+      EUREKA_CLIENT_SERVICEURL_DEFAULTZONE: http://discovery:10002/eureka
+      SPRING_RABBITMQ_HOST: rabbitmq
+      SPRING_RABBITMQ_PORT: 5672
+      SPRING_RABBITMQ_USERNAME: admin
+      SPRING_RABBITMQ_PASSWORD: admin
+      SPRING_DATASOURCE_URL: jdbc:mysql://database:33062/productdatabase?serverTimezone=UTC
+      SPRING_DATASOURCE_USERNAME: root
+      SPRING_DATASOURCE_PASSWORD: root
+    ports:
+      - "10005:10005"
+    hostname: products
+    networks:
+      - fornitureweb
+
+networks:
+  fornitureweb:
