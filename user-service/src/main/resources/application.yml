@@ -1,0 +1,31 @@
+server:
+  port: 10004
+
+spring:
+  application:
+    name: userservice
+  profiles:
+    active: dev
+  config:
+    import: optional:configserver:http://localhost:10001
+
+  datasource:
+    url: jdbc:mysql://localhost:33061/userdatabase
+    username: root
+    password: root
+  jpa:
+    hibernate:
+      ddl-auto: update
+
+logging:
+  level:
+    root: info
+
+eureka:
+  instance:
+    preferIpAddress: true
+  client:
+    serviceUrl:
+      defaultZone: http://admin:admin@localhost:10002/eureka
+    registerWithEureka: true
+    fetchRegistry: true
