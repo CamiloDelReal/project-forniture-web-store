@@ -1,0 +1,469 @@
+{
+	"info": {
+		"_postman_id": "bf1c8637-1e59-4d36-aa16-e8eb5e35a59d",
+		"name": "Forniture Web Store",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Users",
+			"item": [
+				{
+					"name": "Login",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\": \"admin@mail.com\",\r\n    \"password\": \"12345\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:10003/users/login",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "10003",
+							"path": [
+								"users",
+								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get All",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJ7XCJpZFwiOjcsXCJmaXJzdE5hbWVcIjpcIkFkbWluXCIsXCJsYXN0TmFtZVwiOlwiXCIsXCJlbWFpbFwiOlwiYWRtaW5AbWFpbC5jb21cIixcInJvbGVzXCI6W3tcImlkXCI6NSxcIm5hbWVcIjpcIkFETUlOXCJ9XX0iLCJpYXQiOjE2MzU4NzAzMTksImV4cCI6MTYzNTg4ODMxOX0._t_Agwus3MP6u280_-Ze-nmMqPVoVtw8KipwmDpLupyQr_QW1pJl2_yl0oyi9SCv7xPUEXb6LA23pcBv-gt-Xw",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:10003/users",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "10003",
+							"path": [
+								"users"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get by Id",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJ7XCJpZFwiOjYsXCJmaXJzdE5hbWVcIjpcIkd1ZXN0XCIsXCJsYXN0bmFtZVwiOlwiXCIsXCJlbWFpbFwiOlwiZ3Vlc3RAbWFpbC5jb21cIixcInJvbGVzXCI6W3tcImlkXCI6NCxcIm5hbWVcIjpcIkdVRVNUXCJ9XX0iLCJpYXQiOjE2MzU4Njc2OTgsImV4cCI6MTYzNTg4NTY5OH0.O_brL8gYLP0bt2GV6rFMfCOgWf6z0OOwnjhz0adss0OUC3fXtrEH5PiF56VwUWnQVP14kU5Mcnh-Mj1axQPbcQ",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:10003/users/6",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "10003",
+							"path": [
+								"users",
+								"6"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"firstName\": \"Test\",\r\n    \"lastName\": \"\",\r\n    \"email\": \"test@mail.com\",\r\n    \"password\": \"12345\",\r\n    \"roles\": [\"GUEST\"]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:10003/users",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "10003",
+							"path": [
+								"users"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Edit",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJ7XCJpZFwiOjcsXCJmaXJzdE5hbWVcIjpcIkFkbWluXCIsXCJsYXN0TmFtZVwiOlwiXCIsXCJlbWFpbFwiOlwiYWRtaW5AbWFpbC5jb21cIixcInJvbGVzXCI6W3tcImlkXCI6NSxcIm5hbWVcIjpcIkFETUlOXCJ9XX0iLCJpYXQiOjE2MzU4NzAzMTksImV4cCI6MTYzNTg4ODMxOX0._t_Agwus3MP6u280_-Ze-nmMqPVoVtw8KipwmDpLupyQr_QW1pJl2_yl0oyi9SCv7xPUEXb6LA23pcBv-gt-Xw",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"firstName\": \"Guest 2\",\r\n    \"lastName\": \"Guest 2\",\r\n    \"email\": \"guest@mail.com\",\r\n    \"roles\": [ \"GUEST\" ]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:10003/users/6",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "10003",
+							"path": [
+								"users",
+								"6"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJ7XCJpZFwiOjksXCJmaXJzdE5hbWVcIjpcIlRlc3RcIixcImxhc3ROYW1lXCI6XCJcIixcImVtYWlsXCI6XCJ0ZXN0QG1haWwuY29tXCIsXCJyb2xlc1wiOlt7XCJpZFwiOjQsXCJuYW1lXCI6XCJHVUVTVFwifV19IiwiaWF0IjoxNjM1ODcwNzEyLCJleHAiOjE2MzU4ODg3MTJ9.iEpjJCrB7LFwcHNQtcCAiate5yLp8dZxLl5mV_psz2w1BF6-UQcdH3QFbuEECAu5VQZfUDcyf5G4_ynNS-Z4IQ",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:10003/users/9",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "10003",
+							"path": [
+								"users",
+								"9"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Products",
+			"item": [
+				{
+					"name": "Get All Categories",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:10003/categories",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "10003",
+							"path": [
+								"categories"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Category by Id",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:10003/categories/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "10003",
+							"path": [
+								"categories",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create Category",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJ7XCJpZFwiOjcsXCJmaXJzdE5hbWVcIjpcIkFkbWluXCIsXCJsYXN0TmFtZVwiOlwiXCIsXCJlbWFpbFwiOlwiYWRtaW5AbWFpbC5jb21cIixcInJvbGVzXCI6W3tcImlkXCI6NSxcIm5hbWVcIjpcIkFETUlOXCJ9XX0iLCJpYXQiOjE2MzU4OTM0MjQsImV4cCI6MTYzNTkxMTQyNH0.mM0VbYxYtuJ6soCpkTWS_BuJJPKovU5_wlMQaseh2KgGLKlLKB80-CAkKfCqIVsDaOjydozvL4uc0gBgcTp_eg",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"Test 2\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:10003/categories",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "10003",
+							"path": [
+								"categories"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Edit Category",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJ7XCJpZFwiOjcsXCJmaXJzdE5hbWVcIjpcIkFkbWluXCIsXCJsYXN0TmFtZVwiOlwiXCIsXCJlbWFpbFwiOlwiYWRtaW5AbWFpbC5jb21cIixcInJvbGVzXCI6W3tcImlkXCI6NSxcIm5hbWVcIjpcIkFETUlOXCJ9XX0iLCJpYXQiOjE2MzU4OTM0MjQsImV4cCI6MTYzNTkxMTQyNH0.mM0VbYxYtuJ6soCpkTWS_BuJJPKovU5_wlMQaseh2KgGLKlLKB80-CAkKfCqIVsDaOjydozvL4uc0gBgcTp_eg",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"Test\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:10003/categories/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "10003",
+							"path": [
+								"categories",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Category",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJ7XCJpZFwiOjcsXCJmaXJzdE5hbWVcIjpcIkFkbWluXCIsXCJsYXN0TmFtZVwiOlwiXCIsXCJlbWFpbFwiOlwiYWRtaW5AbWFpbC5jb21cIixcInJvbGVzXCI6W3tcImlkXCI6NSxcIm5hbWVcIjpcIkFETUlOXCJ9XX0iLCJpYXQiOjE2MzU4OTM0MjQsImV4cCI6MTYzNTkxMTQyNH0.mM0VbYxYtuJ6soCpkTWS_BuJJPKovU5_wlMQaseh2KgGLKlLKB80-CAkKfCqIVsDaOjydozvL4uc0gBgcTp_eg",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:10003/categories/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "10003",
+							"path": [
+								"categories",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get All Products",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:10003/products",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "10003",
+							"path": [
+								"products"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Product by Id",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:10003/products/20",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "10003",
+							"path": [
+								"products",
+								"20"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create Product",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJ7XCJpZFwiOjcsXCJmaXJzdE5hbWVcIjpcIkFkbWluXCIsXCJsYXN0TmFtZVwiOlwiXCIsXCJlbWFpbFwiOlwiYWRtaW5AbWFpbC5jb21cIixcInJvbGVzXCI6W3tcImlkXCI6NSxcIm5hbWVcIjpcIkFETUlOXCJ9XX0iLCJpYXQiOjE2MzU4OTM2MDUsImV4cCI6MTYzNTkxMTYwNX0.QaR3qQR3DWChNl2sc_hnSt_pznhlHn_c3ckf01-vcRGXTTg05m4AUtbw1elAiFYVSVEPOZhs6ZLsO1OkNcILhg",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"Silla\",\r\n    \"description\": \"\",\r\n    \"price\": 33,\r\n    \"availability\": 99,\r\n    \"categories\": [\"Chairs\"]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:10003/products",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "10003",
+							"path": [
+								"products"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Edit Product",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJ7XCJpZFwiOjcsXCJmaXJzdE5hbWVcIjpcIkFkbWluXCIsXCJsYXN0TmFtZVwiOlwiXCIsXCJlbWFpbFwiOlwiYWRtaW5AbWFpbC5jb21cIixcInJvbGVzXCI6W3tcImlkXCI6NSxcIm5hbWVcIjpcIkFETUlOXCJ9XX0iLCJpYXQiOjE2MzU4OTM2MDUsImV4cCI6MTYzNTkxMTYwNX0.QaR3qQR3DWChNl2sc_hnSt_pznhlHn_c3ckf01-vcRGXTTg05m4AUtbw1elAiFYVSVEPOZhs6ZLsO1OkNcILhg",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"Silla 2\",\r\n    \"description\": \"dff\",\r\n    \"price\": 334,\r\n    \"availability\": 9,\r\n    \"categories\": [\"Couchs\"]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:10003/products/31",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "10003",
+							"path": [
+								"products",
+								"31"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
