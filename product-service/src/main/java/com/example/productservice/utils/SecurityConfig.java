@@ -1,4 +1,4 @@
-package com.example.userservice.utils;
+package com.example.productservice.utils;
 
 import lombok.Getter;
 import lombok.Setter;
