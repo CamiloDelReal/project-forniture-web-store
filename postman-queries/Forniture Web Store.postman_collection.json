@@ -23,13 +23,14 @@
 							}
 						},
 						"url": {
-							"raw": "http://localhost:10003/users/login",
+							"raw": "http://localhost:10003/store/users/login",
 							"protocol": "http",
 							"host": [
 								"localhost"
 							],
 							"port": "10003",
 							"path": [
+								"store",
 								"users",
 								"login"
 							]
@@ -53,13 +54,14 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "http://localhost:10003/users",
+							"raw": "http://localhost:10003/store/users",
 							"protocol": "http",
 							"host": [
 								"localhost"
 							],
 							"port": "10003",
 							"path": [
+								"store",
 								"users"
 							]
 						}
@@ -82,13 +84,14 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "http://localhost:10003/users/6",
+							"raw": "http://localhost:10003/store/users/6",
 							"protocol": "http",
 							"host": [
 								"localhost"
 							],
 							"port": "10003",
 							"path": [
+								"store",
 								"users",
 								"6"
 							]
@@ -114,13 +117,14 @@
 							}
 						},
 						"url": {
-							"raw": "http://localhost:10003/users",
+							"raw": "http://localhost:10003/store/users",
 							"protocol": "http",
 							"host": [
 								"localhost"
 							],
 							"port": "10003",
 							"path": [
+								"store",
 								"users"
 							]
 						}
@@ -152,13 +156,14 @@
 							}
 						},
 						"url": {
-							"raw": "http://localhost:10003/users/6",
+							"raw": "http://localhost:10003/store/users/6",
 							"protocol": "http",
 							"host": [
 								"localhost"
 							],
 							"port": "10003",
 							"path": [
+								"store",
 								"users",
 								"6"
 							]
@@ -182,13 +187,14 @@
 						"method": "DELETE",
 						"header": [],
 						"url": {
-							"raw": "http://localhost:10003/users/9",
+							"raw": "http://localhost:10003/store/users/9",
 							"protocol": "http",
 							"host": [
 								"localhost"
 							],
 							"port": "10003",
 							"path": [
+								"store",
 								"users",
 								"9"
 							]
@@ -207,13 +213,14 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "http://localhost:10003/categories",
+							"raw": "http://localhost:10003/store/categories",
 							"protocol": "http",
 							"host": [
 								"localhost"
 							],
 							"port": "10003",
 							"path": [
+								"store",
 								"categories"
 							]
 						}
@@ -226,13 +233,14 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "http://localhost:10003/categories/1",
+							"raw": "http://localhost:10003/store/categories/1",
 							"protocol": "http",
 							"host": [
 								"localhost"
 							],
 							"port": "10003",
 							"path": [
+								"store",
 								"categories",
 								"1"
 							]
@@ -265,13 +273,14 @@
 							}
 						},
 						"url": {
-							"raw": "http://localhost:10003/categories",
+							"raw": "http://localhost:10003/store/categories",
 							"protocol": "http",
 							"host": [
 								"localhost"
 							],
 							"port": "10003",
 							"path": [
+								"store",
 								"categories"
 							]
 						}
@@ -303,13 +312,14 @@
 							}
 						},
 						"url": {
-							"raw": "http://localhost:10003/categories/1",
+							"raw": "http://localhost:10003/store/categories/1",
 							"protocol": "http",
 							"host": [
 								"localhost"
 							],
 							"port": "10003",
 							"path": [
+								"store",
 								"categories",
 								"1"
 							]
@@ -333,13 +343,14 @@
 						"method": "DELETE",
 						"header": [],
 						"url": {
-							"raw": "http://localhost:10003/categories/1",
+							"raw": "http://localhost:10003/store/categories/1",
 							"protocol": "http",
 							"host": [
 								"localhost"
 							],
 							"port": "10003",
 							"path": [
+								"store",
 								"categories",
 								"1"
 							]
@@ -353,13 +364,14 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "http://localhost:10003/products",
+							"raw": "http://localhost:10003/store/products",
 							"protocol": "http",
 							"host": [
 								"localhost"
 							],
 							"port": "10003",
 							"path": [
+								"store",
 								"products"
 							]
 						}
@@ -372,15 +384,38 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "http://localhost:10003/products/20",
+							"raw": "http://localhost:10003/store/products/20",
 							"protocol": "http",
 							"host": [
 								"localhost"
 							],
 							"port": "10003",
 							"path": [
+								"store",
 								"products",
 								"20"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get All Products by Category",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:10003/store/categories/1/products",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "10003",
+							"path": [
+								"store",
+								"categories",
+								"1",
+								"products"
 							]
 						}
 					},
@@ -411,13 +446,14 @@
 							}
 						},
 						"url": {
-							"raw": "http://localhost:10003/products",
+							"raw": "http://localhost:10003/store/products",
 							"protocol": "http",
 							"host": [
 								"localhost"
 							],
 							"port": "10003",
 							"path": [
+								"store",
 								"products"
 							]
 						}
@@ -449,15 +485,37 @@
 							}
 						},
 						"url": {
-							"raw": "http://localhost:10003/products/31",
+							"raw": "http://localhost:10003/store/products/31",
 							"protocol": "http",
 							"host": [
 								"localhost"
 							],
 							"port": "10003",
 							"path": [
+								"store",
 								"products",
 								"31"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Pictures",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:10003/store/pictures/bed-landscape-1.png",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "10003",
+							"path": [
+								"store",
+								"pictures",
+								"bed-landscape-1.png"
 							]
 						}
 					},
