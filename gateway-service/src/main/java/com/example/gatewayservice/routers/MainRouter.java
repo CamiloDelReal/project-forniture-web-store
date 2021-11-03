@@ -13,38 +13,47 @@ public class MainRouter {
     public RouteLocator routeLocator(RouteLocatorBuilder routeLocatorBuilder) {
         return routeLocatorBuilder.routes()
                 .route(r -> r
-                        .path("/users/login")
+                        .path("/store/users/login")
                         .and()
                         .method(HttpMethod.POST)
                         .filters(f -> f
-                                .rewritePath("/(?<segment>.*)", "/${segment}")
+                                .rewritePath("/store/(?<segment>.*)", "/${segment}")
                         )
                         .uri("lb://userservice")
                 )
                 .route(r -> r
-                        .path("/users/**")
+                        .path("/store/users/**")
                         .and()
                         .method(HttpMethod.GET, HttpMethod.POST, HttpMethod.PUT, HttpMethod.DELETE)
                         .filters(f -> f
-                                .rewritePath("/(?<segment>.*)", "/${segment}")
+                                .rewritePath("/store/(?<segment>.*)", "/${segment}")
                         )
                         .uri("lb://userservice")
                 )
                 .route(r -> r
-                        .path("/categories/**")
+                        .path("/store/categories/**")
                         .and()
                         .method(HttpMethod.GET, HttpMethod.POST, HttpMethod.PUT, HttpMethod.DELETE)
                         .filters(f -> f
-                                .rewritePath("/(?<segment>.*)", "/${segment}")
+                                .rewritePath("/store/(?<segment>.*)", "/${segment}")
                         )
                         .uri("lb://productservice")
                 )
                 .route(r -> r
-                        .path("/products/**")
+                        .path("/store/products/**")
                         .and()
                         .method(HttpMethod.GET, HttpMethod.POST, HttpMethod.PUT, HttpMethod.DELETE)
                         .filters(f -> f
-                                .rewritePath("/(?<segment>.*)", "/${segment}")
+                                .rewritePath("/store/(?<segment>.*)", "/${segment}")
+                        )
+                        .uri("lb://productservice")
+                )
+                .route(r -> r
+                        .path("/store/pictures/*")
+                        .and()
+                        .method(HttpMethod.GET)
+                        .filters(f -> f
+                                .rewritePath("/store/(?<segment>.*)", "/${segment}")
                         )
                         .uri("lb://productservice")
                 )
