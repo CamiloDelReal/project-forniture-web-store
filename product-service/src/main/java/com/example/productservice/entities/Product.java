@@ -30,8 +30,11 @@ public class Product {
     @Column(name = "availability")
     private int availability;
 
-    @Column(name = "picture_file_name")
-    private String pictureFileName;
+    @Column(name = "picture_portrait_file_name")
+    private String picturePortraitFileName;
+
+    @Column(name = "picture_landscape_file_name")
+    private String pictureLandscapeFileName;
 
     @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.DETACH)
     @JoinTable(name = "products_categories",
@@ -39,12 +42,13 @@ public class Product {
             inverseJoinColumns = @JoinColumn(name = "category_id", referencedColumnName = "id"))
     private List<Category> categories;
 
-    public Product(String name, String description, float price, int availability, String pictureFileName, List<Category> categories) {
+    public Product(String name, String description, float price, int availability, String picturePortraitFileName, String pictureLandscapeFileName, List<Category> categories) {
         this.name = name;
         this.description = description;
         this.price = price;
         this.availability = availability;
-        this.pictureFileName = pictureFileName;
+        this.picturePortraitFileName = picturePortraitFileName;
+        this.pictureLandscapeFileName = pictureLandscapeFileName;
         this.categories = categories;
     }
 }

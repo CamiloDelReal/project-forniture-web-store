@@ -56,6 +56,18 @@ public class ProductService {
         return response;
     }
 
+    public List<ProductResponse> getByCategory(Long categoryId) {
+        log.info("getByCategory " + categoryId);
+        List<ProductResponse> response = null;
+        List<Product> products = productRepository.findAllByCategoryId(categoryId);
+        if(products != null && !products.isEmpty()) {
+            response = products.stream().map(p -> modelMapper.map(p, ProductResponse.class)).collect(Collectors.toList());
+        } else {
+            response = new ArrayList<>();
+        }
+        return response;
+    }
+
     public ProductResponse create(ProductRequest productRequest) {
         log.info("create " + productRequest);
         ProductResponse response = null;

@@ -14,4 +14,6 @@ public class CategoryRequest {
     @NotNull
     @NotBlank
     private String name;
+
+    private String description;
 }

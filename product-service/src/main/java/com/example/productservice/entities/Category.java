@@ -20,11 +20,19 @@ public class Category {
     @Column(name = "name")
     private String name;
 
-    @Column(name = "picture_file_name")
-    private String pictureFileName;
+    @Column(name = "description")
+    private String description;
 
-    public Category(String name, String pictureFileName) {
+    @Column(name = "picture_portrait_file_name")
+    private String picturePortraitFileName;
+
+    @Column(name = "picture_landscape_file_name")
+    private String pictureLandscapeFileName;
+
+    public Category(String name, String description, String picturePortraitFileName, String pictureLandscapeFileName) {
         this.name = name;
-        this.pictureFileName = pictureFileName;
+        this.description = description;
+        this.picturePortraitFileName = picturePortraitFileName;
+        this.pictureLandscapeFileName = pictureLandscapeFileName;
     }
 }

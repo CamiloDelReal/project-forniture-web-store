@@ -15,6 +15,7 @@ public class ProductResponse {
     private String description;
     private float price;
     private int availability;
-    private String pictureFileName;
+    private String picturePortraitFileName;
+    private String pictureLandscapeFileName;
     private List<CategoryResponse> categories;
 }

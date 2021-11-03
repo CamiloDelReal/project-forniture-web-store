@@ -2,7 +2,9 @@ package com.example.productservice.controllers;
 
 import com.example.productservice.dtos.CategoryRequest;
 import com.example.productservice.dtos.CategoryResponse;
+import com.example.productservice.dtos.ProductResponse;
 import com.example.productservice.services.CategoryService;
+import com.example.productservice.services.ProductService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -19,10 +21,12 @@ import java.util.List;
 @Slf4j
 public class CategoryController {
     private final CategoryService categoryService;
+    private final ProductService productService;
 
     @Autowired
-    public CategoryController(CategoryService categoryService) {
+    public CategoryController(CategoryService categoryService, ProductService productService) {
         this.categoryService = categoryService;
+        this.productService = productService;
     }
 
     @GetMapping(produces = MediaType.APPLICATION_JSON_VALUE)
@@ -39,6 +43,19 @@ public class CategoryController {
         CategoryResponse category = categoryService.getById(id);
         if(category != null) {
             response = new ResponseEntity<>(category, HttpStatus.OK);
+        } else {
+            response = new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
+        return response;
+    }
+
+    @GetMapping(path = "/{id}/products", produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<List<ProductResponse>> getProductsByCategory(@PathVariable("id") Long id) {
+        log.info("getProductByCategory " + id);
+        ResponseEntity<List<ProductResponse>> response = null;
+        if(categoryService.exists(id)) {
+            List<ProductResponse> products = productService.getByCategory(id);
+            response = new ResponseEntity<>(products, HttpStatus.OK);
         } else {
             response = new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }

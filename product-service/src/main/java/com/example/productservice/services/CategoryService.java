@@ -27,6 +27,10 @@ public class CategoryService {
         this.modelMapper = modelMapper;
     }
 
+    public boolean exists(Long id) {
+        return categoryRepository.existsById(id);
+    }
+
     public List<CategoryResponse> getAll() {
         List<CategoryResponse> response = null;
         List<Category> categories = categoryRepository.findAll();

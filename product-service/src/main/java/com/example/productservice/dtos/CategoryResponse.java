@@ -2,6 +2,8 @@ package com.example.productservice.dtos;
 
 import lombok.*;
 
+import javax.persistence.Column;
+
 @Getter
 @Setter
 @AllArgsConstructor
@@ -10,5 +12,7 @@ import lombok.*;
 public class CategoryResponse {
     private Long id;
     private String name;
-    private String pictureFileName;
+    private String description;
+    private String picturePortraitFileName;
+    private String pictureLandscapeFileName;
 }
