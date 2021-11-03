@@ -1,0 +1,7 @@
+{
+  "/store/*": {
+    "target": "http://localhost:10003",
+    "secure": false,
+    "logLevel": "debug"
+  }
+}

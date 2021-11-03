@@ -1,0 +1,35 @@
+<nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-primary">
+  <a class="navbar-brand" role="button" [routerLink]="['/home']">Web Store</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav ml-auto">
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="productDropdown" role="button" data-toggle="dropdown" aria-expanded="false">
+          Products
+        </a>
+        <div class="dropdown-menu bg-primary" aria-labelledby="productDropdown">
+          <a class="dropdown-item text-white bg-primary" [routerLink]="['/category/0']" role="button">All Products</a>
+          <a class="dropdown-item text-white bg-primary" *ngFor="let category of categories; let i = index" role="button" [routerLink]="['/category/'+category.id]" [state]="category">{{category.name}}</a>
+        </div>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link">Sign up</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link">Login</a>
+      </li>
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" id="profileDropdown" role="button" data-toggle="dropdown" aria-expanded="false">
+          Profile
+        </a>
+        <div class="dropdown-menu bg-primary" aria-labelledby="profileDropdown">
+          <a class="dropdown-item text-white bg-primary">Edit</a>
+          <a class="dropdown-item text-white bg-primary">Logout</a>
+        </div>
+      </li>
+    </ul>
+  </div>
+</nav>
